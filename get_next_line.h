@@ -6,7 +6,7 @@
 /*   By: lkramer <lkramer@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:10:03 by lkramer           #+#    #+#             */
-/*   Updated: 2024/12/09 15:05:24 by lkramer          ###   ########.fr       */
+/*   Updated: 2024/12/09 15:09:40 by lkramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 typedef struct s_list
 {
-	int		fd;
-	char	*buffer;
+	int				fd;
+	char			*buffer;
 	struct s_list	*next;
-}		t_list;
+}	t_list;
 
 #endif
