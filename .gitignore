@@ -123,5 +123,7 @@ Thumbs.db.meta
 
 # Other Files 
 test_printf
+test.txt
+test_gnl   
 
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,visualstudiocode,vim
