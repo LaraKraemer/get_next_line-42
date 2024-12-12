@@ -1,27 +1,26 @@
-#include <unistd.h>
-#include <fcntl.h>
+#include "ft_get_next_line.h"
 #include <stdio.h>
+#include <fcntl.h>
 
-
-/* int main()
+int main(void)
 {
     int     fd;
-    char    buf[256];
-    int     char_read;
+    char    *line;
 
-    fd = open("file2.txt", O_RDWR | O_CREAT);
-    printf("fd of file %d", fd);
+    fd = open("test.txt", O_RDONLY);
+    if (fd < 0)
+    {
+        perror("Error opening file");
+        return (1);
+    }
+	printf("File opened successfully. Reading lines...\n");
+
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
+	printf("Finished reading file.\n");
+    close(fd);
     return (0);
 }
-
-int main()
-{
-    int fd;
-
-    fd = open("file.txt", O_RDWR | O_CREAT);
-    printf("fd of file %d", fd);
-    dup2(fd, 1);
-    write(1, "hello\n", 6);
-    write(fd, "hello\n", 6);
-    return (0);
-} */
