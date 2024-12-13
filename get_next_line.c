@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkramer <lkramer@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:21:17 by lkramer           #+#    #+#             */
-/*   Updated: 2024/12/12 11:57:18 by lkramer          ###   ########.fr       */
+/*   Updated: 2024/12/13 11:44:05 by lkramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_get_next_line.h"
+#include "get_next_line.h"
 
 static char	*ft_nodes_to_string(t_list *lst)
 {
@@ -23,10 +23,10 @@ static char	*ft_nodes_to_string(t_list *lst)
 	temp_lst = lst;
 	string_len = ft_lststring_len(lst);
 	if (string_len <= 0)
-		return (ft_lstclear(temp_lst));
+		return (ft_lstclear(temp_lst), NULL);
 	string = malloc(sizeof(*string) * (string_len + 1));
 	if (!string)
-		return (ft_lstclear(temp_lst));
+		return (NULL);
 	lst = temp_lst;
 	i = 0;
 	while (lst != NULL && i < string_len)
@@ -41,10 +41,6 @@ static char	*ft_nodes_to_string(t_list *lst)
 	return (string);
 }
 
-/* Creates a new_node node with remaining content after the \n.
- Marks the new_nodeline position in the original 
- node as the end of the line (\0).
- */
 static t_list	*ft_node_after_nl(t_list *lst, char *nl)
 {
 	t_list			*new_node;
@@ -54,7 +50,7 @@ static t_list	*ft_node_after_nl(t_list *lst, char *nl)
 		return (NULL);
 	new_node = malloc(sizeof(*new_node));
 	if (!new_node)
-		return (free(new_node), NULL);
+		return (NULL);
 	new_node->next = NULL;
 	i = 0;
 	nl++;
@@ -75,7 +71,10 @@ static int	ft_first_node_in_lst(t_list **lst, t_list **head)
 
 	new_node = malloc(sizeof(*new_node));
 	if (!new_node)
-		return ((long)ft_lstclear(*head));
+	{
+		ft_lstclear(*head);
+		return (0);
+	}
 	new_node->next = NULL;
 	if (!*lst)
 		*head = new_node;
@@ -116,7 +115,7 @@ char	*get_next_line(int fd)
 		if (red < 0)
 		{
 			lst = NULL;
-			return (ft_lstclear(head));
+			return (ft_lstclear(head), NULL);
 		}
 		(lst->buf)[red] = '\0';
 		nl = ft_strchr(lst->buf, '\n');
@@ -124,7 +123,6 @@ char	*get_next_line(int fd)
 	lst = ft_node_after_nl(lst, nl);
 	return (ft_nodes_to_string(head));
 }
-
 
 /* 
 t_list	*ft_nl_new_nodenode(t_list *lst, char *nl)

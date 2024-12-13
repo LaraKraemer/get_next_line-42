@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line.h                                 :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkramer <lkramer@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:10:03 by lkramer           #+#    #+#             */
-/*   Updated: 2024/12/11 15:43:52 by lkramer          ###   ########.fr       */
+/*   Updated: 2024/12/13 11:47:26 by lkramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GET_NEXT_LINE_H
-# define FT_GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 # include <fcntl.h>
@@ -29,7 +29,7 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 char	*ft_strchr(char *s, char c);
-size_t	ft_strsize(const char *str);
+size_t	ft_strsize(char *str);
 size_t	ft_lststring_len(t_list *lst);
 void	*ft_lstclear(t_list *lst);
 

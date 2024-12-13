@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line_utils.c                           :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkramer <lkramer@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:21:20 by lkramer           #+#    #+#             */
-/*   Updated: 2024/12/11 15:36:02 by lkramer          ###   ########.fr       */
+/*   Updated: 2024/12/13 11:44:46 by lkramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_get_next_line.h"
+#include "get_next_line.h"
 
 char	*ft_strchr(char *s, char c)
 {
@@ -23,7 +23,7 @@ char	*ft_strchr(char *s, char c)
 	return (NULL);
 }
 
-size_t	ft_strsize(const char *str)
+size_t	ft_strsize(char *str)
 {
 	size_t	i;
 
@@ -59,7 +59,6 @@ void	*ft_lstclear(t_list *lst)
 	lst = NULL;
 	return (NULL);
 }
-
 
 /* size_t	ft_strsize(const char *s)
 {
